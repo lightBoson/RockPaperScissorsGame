@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("TestProject")]
 
 namespace RockPaperScissors
 {
-    internal class Program
+
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -47,7 +51,7 @@ namespace RockPaperScissors
         {
             Console.WriteLine("Welcome to the game!");
         }
-        static Gamer CreateUser()
+        internal static Gamer CreateUser()
         {
             string userName = "";
             while (string.IsNullOrEmpty(userName))
@@ -75,9 +79,8 @@ namespace RockPaperScissors
             Console.WriteLine("Good luck " + userName + "!");
 
             return human;
-        }
-
-        static string RandomGamerName()
+        }  
+        internal static string RandomGamerName()
         {
             List<string> names = new List<string>() { "Adam", "Robert", "Pierre", "Lucile", "Eva", "Kate" };
             var random = new Random();
@@ -85,4 +88,6 @@ namespace RockPaperScissors
             return names[index];
         }
     }
+
+    
 }

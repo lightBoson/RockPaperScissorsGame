@@ -1,20 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("TestProject")]
 
 namespace RockPaperScissors
 {
-    enum GamerType
+    public enum GamerType
     {
         Human,
         Computer
     }
 
-    interface IGamer
+    public interface IGamer
     {
         void introduce();
+        public virtual string type() { return "IGamer"; }
     }
 
     internal class Gamer : IGamer
@@ -33,9 +33,11 @@ namespace RockPaperScissors
 
         public void introduce() { Console.WriteLine("Gamer class"); }
 
+        public string type() { return "Gamer"; }
+
         public Answer randomChoice() {
             Random random = new Random();
-            return (Answer)random.Next(Enum.GetNames(typeof(Answer)).Length); }
+            return (Answer)random.Next(3); } // bierzemy 3 pierwsze bo nie mozemy zwrocic Unknown
         public Gamer(string name, GamerType type = GamerType.Computer)
         {
             _name = name;

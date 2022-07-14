@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("TestProject")]
 
 namespace RockPaperScissors
 {
@@ -27,7 +26,7 @@ namespace RockPaperScissors
         Gamer _firstGamer;
         Gamer _secondGamer;
         public int getGameplayNumber() { return _gameplayNumber; }
-        private Answer getGamerAnswer(Gamer gamer)
+        internal Answer getGamerAnswer(Gamer gamer)
         {
             Answer gamerAnswer = Answer.Unknown;
             if (gamer.getType() == GamerType.Computer)
@@ -54,7 +53,7 @@ namespace RockPaperScissors
             }
             return gamerAnswer;
         }
-        private Result getResult(Answer firstAnswer, Answer secondAnswer)
+        internal Result getResult(Answer firstAnswer, Answer secondAnswer)
         {
             // First wins
             if (firstAnswer == Answer.Rock && secondAnswer == Answer.Scissors)
