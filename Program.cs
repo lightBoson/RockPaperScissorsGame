@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace RockPaperScissors
+﻿using System.Linq;
+namespace PaperStoneScissors
 {
     internal class Program
     {
@@ -10,13 +7,13 @@ namespace RockPaperScissors
         {
             // Welcome the Gamer
             Welcome();
-            Gamer human = CreateUser();
+            Gamer human = CreateUser(); 
             int gamePlayNumber = 1;
             bool endGame = false;
             List<Result> results = new List<Result>();
             while (!endGame)
             {
-                Gamer computer = new Gamer(RandomGamerName(), GamerType.Computer);
+                Gamer computer = new(RandomGamerName(), GamerType.Computer);
                 Console.WriteLine("Your openent is " + computer.getName());
                 Gameplay gameplay = new Gameplay(human, computer, gamePlayNumber++);
                 Result result = gameplay.startGameplay();
@@ -24,8 +21,8 @@ namespace RockPaperScissors
                 if (result == Result.FirstWins)
                     Console.WriteLine("Congratulations " + human.getName() + "!");
                 else if (result == Result.SecondWins)
-                    Console.WriteLine("Congratulations " + computer.getName() + "!");
-                else
+                    Console.WriteLine("Congratulations " + computer.getName() + "!");  
+                else   
                     Console.WriteLine("Draw! Nice try, both of you :)");
                 // Store result
                 results.Add(result);
@@ -43,8 +40,7 @@ namespace RockPaperScissors
             }
             Console.WriteLine("Thanks for playing " + human.getName() + "!");
         }
-        static void Welcome()
-        {
+        static void Welcome() {
             Console.WriteLine("Welcome to the game!");
         }
         static Gamer CreateUser()
@@ -58,7 +54,7 @@ namespace RockPaperScissors
                 {
                     Console.WriteLine("The empty name provide. Please try again to type your name");
                 }
-                else if (userName.Length > 20)
+                else if(userName.Length > 20)
                 {
                     Console.WriteLine("The name is too long. Please provide a name with less than 20 characters. Please try again to type your name");
                     userName = "";
@@ -70,9 +66,9 @@ namespace RockPaperScissors
                 }
             }
 
-            Gamer human = new Gamer(userName, GamerType.Human);
+            Gamer human = new(userName, GamerType.Human); 
             // Welcome new human gamer
-            Console.WriteLine("Good luck " + userName + "!");
+            Console.WriteLine("Good luck " + userName+"!");    
 
             return human;
         }
@@ -85,4 +81,5 @@ namespace RockPaperScissors
             return names[index];
         }
     }
+
 }
